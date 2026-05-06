@@ -1,0 +1,144 @@
+Create a Login Form using HTML, CSS, and JavaScript with proper styling. Apply the following
+validations:
+a. Username must be minimum 5 characters
+b. Password must be minimum 6 characters
+c. Password should contain at least one number
+d. Prevent form submission if validation fails
+e. Display error messages below each field
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8f5e9;
+            /* light green background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border-top: 5px solid #2e7d32;
+            /* dark green accent */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2e7d32;
+            /* heading color */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #1b5e20;
+            /* label color */
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #81c784;
+            /* green border */
+            border-radius: 4px;
+        }
+
+        input:focus {
+            border-color: #2e7d32;
+            outline: none;
+        }
+
+        .error {
+            color: #d32f2f;
+            /* red for errors */
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #388e3c;
+            /* button green */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b5e20;
+            /* darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <div id="usernameError" class="error"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <div id="passwordError" class="error"></div>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            let valid = true;
+            // Clear previous errors 
+            document.getElementById("usernameError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            // Username validation 
+            if (username.length < 5) {
+                document.getElementById("usernameError").textContent = "Username must be at least 5 
+                characters."; 
+                valid = false;
+            }
+
+            // Password validation 
+            if (password.length < 6) {
+                document.getElementById("passwordError").textContent = "Password must be at least 6 
+                characters."; 
+                valid = false;
+            } else if (!/\d/.test(password)) {
+                document.getElementById("passwordError").textContent = "Password must contain at least 
+one number."; 
+                valid = false;
+            }
+            // Prevent form submission if invalid 
+            if (!valid) {
+                event.preventDefault();
+            }
+        }); 
+    </script>
+</body>
+
+</html>

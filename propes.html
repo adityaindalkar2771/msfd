@@ -1,0 +1,48 @@
+Create a React application that demonstrates passing data from parent to child using props.  
+❖ Input : 
+import React from 'react'; 
+ 
+import React from "react"; 
+ 
+// Child Component 
+const DataBadge = ({ label, value }) => ( 
+  <div 
+    style={{ 
+      background: "#16213e", 
+      border: "1px solid #4ecca3", 
+      color: "#fff", 
+      padding: "15px", 
+      borderRadius: "10px", 
+      marginBottom: "10px", 
+      display: "flex", 
+      justifyContent: "space-between"  
+    }} 
+  > 
+    <span style={{ color: "#4ecca3", fontWeight: "bold" }}> 
+      {label}: 
+    </span> 
+    <span>{value}</span> 
+  </div> 
+); 
+ 
+// Parent Component 
+function App() { 
+  return ( 
+    <div 
+      style={{ 
+        padding: "40px", 
+        background: "#0f3460", 
+        height: "100vh" 
+      }} 
+    > 
+      <h2 style={{ color: "#fff" }}>Project Metadata</h2> 
+ 
+      {/* Passing props */} 
+      <DataBadge label="Student Name" value="Aditya Indalkar" /> 
+      <DataBadge label="Exam Cycle" value="June 2026" /> 
+      <DataBadge label="Target" value="SET NET" /> 
+    </div> 
+  ); 
+} 
+ 
+export default App;
